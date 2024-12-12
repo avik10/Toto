@@ -1,15 +1,15 @@
-const dotenv = require('dotenv')
-dotenv.config()
-const express = require('express')
+const express = require('express');
+const AuthRoute = require('./routes/auth.route');
+const bodyParser = require('body-parser');
 const cors = require('cors')
-const app = express()
-const connectToDB = require('./db/db')
 
-connectToDB()
+const app = express();
+const PORT = process.env.PORT || 5000;
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(cors());
 
-app.get('/', (req, res) => {
-    res.send('Hello Payel, ami onek ta valobasi')
-}); 
+app.use('/auth', AuthRoute);
 
-module.exports = app;
+app.listen(PORT, () => console.log(`Server Run on port : ${PORT}`));
