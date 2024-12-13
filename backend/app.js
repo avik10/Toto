@@ -1,3 +1,4 @@
+
 const express = require('express');
 const AuthRoute = require('./routes/auth.route');
 const bodyParser = require('body-parser');
@@ -11,5 +12,4 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(cors());
 
 app.use('/auth', AuthRoute);
-
 app.listen(PORT, () => console.log(`Server Run on port : ${PORT}`));
